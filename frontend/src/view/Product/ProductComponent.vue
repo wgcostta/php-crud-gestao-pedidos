@@ -1,7 +1,9 @@
 <template>
   <div class="main">
     <div class="login">
-      <div class="content-login"></div>
+      <div class="content-login">
+          
+      </div>
     </div>
   </div>
 </template>
