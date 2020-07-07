@@ -1,4 +1,4 @@
-#php-crud-gestao-pedidos - APIs para gestão de produtos, pedidos e cotação de frete para lojas
+# APIs para gestão de produtos, pedidos e cotação de frete para lojas
 
 
 Teste de Conhecimentos - Programador PHP
