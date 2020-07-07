@@ -1,6 +1,11 @@
 @import './colors';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
 .main {
     display: flex;
     height: 100vh;
+    font-family: Roboto,sans-serif,Tahoma;
 }
+

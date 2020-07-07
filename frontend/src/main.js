@@ -5,8 +5,12 @@ import ProductComponent from './view/Product/ProductComponent'
 import HomeComponent from './view/Home/HomeComponent'
 import OrdersComponent from './view/Orders/OrdersComponent'
 import QuotationsComponent from './view/Quotations/QuotationsComponent'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
-
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)

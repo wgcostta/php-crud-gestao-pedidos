@@ -9,9 +9,26 @@
     .content-login{
         width: 400px;
         height: 450px;
-        background-color: $purple; //alterar
-        border-radius: 7px;
+        border: 2px solid $purple;
+        border-radius: 5px;
         justify-content: center;
+        padding: 5px;
+
+        header{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
+}
+
+.input,mt-2,button{
+    padding: 2px;
+    margin: 3px;
+}
+
+button{
+    float:right
 }
