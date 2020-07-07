@@ -1,0 +1,17 @@
+@import '@/assets/scss/_main';
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content-login{
+        width: 400px;
+        height: 450px;
+        background-color: $purple; //alterar
+        border-radius: 7px;
+        justify-content: center;
+    }
+
+}
