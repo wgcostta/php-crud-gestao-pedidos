@@ -13,6 +13,7 @@
         border-radius: 5px;
         justify-content: center;
         padding: 5px;
+        flex-direction: column;
 
         header{
             width: 100%;
@@ -20,15 +21,26 @@
             justify-content: center;
             align-items: center;
         }
+
+        h5{
+            margin-top: 30px;  
+        }
+
     }
 
 }
 
+
 .input,mt-2,button{
     padding: 2px;
-    margin: 3px;
+    margin:  2px 8px 8px 2px;
 }
 
 button{
     float:right
+}
+
+.form{
+    //width: 90%;
+    margin-top: 40px;
 }
