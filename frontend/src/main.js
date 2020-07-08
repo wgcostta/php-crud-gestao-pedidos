@@ -18,8 +18,8 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/product', name: 'product', component: ProductComponent },
   { path: '/', name: 'home', component: HomeComponent },
+  { path: '/product', name: 'product', component: ProductComponent },
   { path: '/orders', name: 'orders', component: OrdersComponent },
   { path: '/quotations', name: 'quotations', component: QuotationsComponent }
 ]

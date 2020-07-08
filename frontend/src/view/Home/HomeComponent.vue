@@ -1,5 +1,7 @@
 <template>
-  <DashBoardComponent />
+  <DashBoardComponent>
+    <div slot="slot-pages" class="content-pages"></div>
+  </DashBoardComponent>
 </template>
 
 <script>
