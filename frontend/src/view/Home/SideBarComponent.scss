@@ -1,0 +1,19 @@
+@import '@/assets/scss/_main';
+
+.main{
+
+    .sidebar{
+        .top{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            span{
+                width: 150px;
+                height: 120px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    
+}

@@ -6,6 +6,8 @@ import HomeComponent from './view/Home/HomeComponent'
 import OrdersComponent from './view/Orders/OrdersComponent'
 import QuotationsComponent from './view/Quotations/QuotationsComponent'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
@@ -16,8 +18,8 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', name: 'product', component: ProductComponent },
-  { path: '/home', name: 'home', component: HomeComponent },
+  { path: '/product', name: 'product', component: ProductComponent },
+  { path: '/', name: 'home', component: HomeComponent },
   { path: '/orders', name: 'orders', component: OrdersComponent },
   { path: '/quotations', name: 'quotations', component: QuotationsComponent }
 ]
@@ -26,6 +28,7 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
+/*eslint-disabled no-new*/
 new Vue({
   router,
   render: h => h(App),

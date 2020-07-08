@@ -18,7 +18,7 @@
               Cancelar
               <b-icon icon="chevron-bar-left" aria-hidden="true"></b-icon>
             </b-button>
-            <b-button variant="success" @click="login()">
+            <b-button variant="success" @click="salvar()">
               Salvar
               <b-icon icon="check2" aria-hidden="true"></b-icon>
             </b-button>
@@ -42,7 +42,7 @@ export default {
     };
   },
   methods: {
-    login() {
+    salvar() {
       this.$router.push({ name: "home" });
     }
   }

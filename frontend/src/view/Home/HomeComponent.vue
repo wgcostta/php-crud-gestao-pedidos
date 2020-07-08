@@ -1,9 +1,14 @@
 <template>
-  <p>Home da DashBoard</p>
+  <DashBoardComponent />
 </template>
 
 <script>
-export default {};
+import DashBoardComponent from "./DashBoardComponent";
+export default {
+  components: {
+    DashBoardComponent
+  }
+};
 </script>
 
 <style scoped>
