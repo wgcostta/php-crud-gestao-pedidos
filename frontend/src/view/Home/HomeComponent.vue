@@ -20,10 +20,9 @@ export default {
   },
   methods: {
     async getUsers() {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+      const response = await axios.get("http://locahost:8000/api/");
       if (response.status == 200) {
+        console.log(response.data);
         this.uses = response.data;
       } else {
         console.error("Ocorreu um erro na API.");

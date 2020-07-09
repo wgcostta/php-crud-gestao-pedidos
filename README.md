@@ -1,5 +1,11 @@
 # APIs para gestão de produtos, pedidos e cotação de frete para lojas
 
+Subir frontend:
+yarn install
+yarn serve
+
+subir o backend:
+artisan serve
 
 Teste de Conhecimentos - Programador PHP
 Objetivo
