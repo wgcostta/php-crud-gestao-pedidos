@@ -29,7 +29,8 @@ export default {
     },
 
     apagar: (product) => {
-        return http.delete('product', { data: product })
+        let urlEnvio = 'product/' + product.id + '/delete';
+        return http.delete(urlEnvio, { data: product })
     }
 
 }

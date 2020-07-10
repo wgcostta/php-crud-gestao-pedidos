@@ -43,14 +43,34 @@
 
 
 <script>
+import Product from "../services/productService";
 export default {
   name: "ListComponent",
   props: { products: Array },
   methods: {
     editar(product) {
-      //this.product = product;
       this.$router.push("/product?id=" + product.id);
-      //this.$router.push({ name: "product" }, { queryParams: product });
+    },
+    remover(product) {
+      if (confirm("Deseja excluir o produto?")) {
+        Product.apagar(product)
+          .then(resposta => {
+            Product.listar()
+              .then(resposta => {
+                this.products = resposta.data;
+              })
+              .catch(e => {
+                console.log(e);
+              });
+            console.log(resposta);
+            Product.listar().then(resposta => {
+              console.log(resposta);
+            });
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
     }
   }
 

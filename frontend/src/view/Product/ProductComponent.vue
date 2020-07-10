@@ -110,20 +110,6 @@ export default {
       this.product = product;
     },
 
-    remover(product) {
-      if (confirm("Deseja excluir o produto?")) {
-        Product.apagar(product)
-          .then(resposta => {
-            console.log(resposta);
-            this.listar();
-            this.errors = {};
-          })
-          .catch(e => {
-            alert("Campos Obrigatórios não informados!");
-            this.errors = e.response.data.errors;
-          });
-      }
-    },
     paginaPrincipal() {
       this.$router.push(
         { name: "home" },
