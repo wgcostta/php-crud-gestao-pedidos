@@ -11,6 +11,18 @@ export default {
                 } else {
                     console.error("Ocorreu um erro na API.");
                 }*/
+    },
+
+    salvar: (product) => {
+        return http.post('product', product);
+    },
+
+    atualizar: (product) => {
+        return http.put('product', product);
+    },
+
+    apagar: (product) => {
+        return http.delete('product', { data: product })
     }
 
 }

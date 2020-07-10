@@ -9,7 +9,7 @@
 <script>
 import DashBoardComponent from "./DashBoardComponent";
 import ListComponent from "../../components/ListComponent";
-import Product from "../../services/products";
+import Product from "../../services/productService";
 
 export default {
   name: "HomeComponent",
@@ -20,7 +20,6 @@ export default {
   },
   mounted() {
     Product.listar().then(resposta => {
-      console.log(resposta);
       this.products = resposta.data;
     });
   },

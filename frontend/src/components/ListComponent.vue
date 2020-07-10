@@ -5,22 +5,34 @@
       <hr />
 
       <div class="content">
-        <div>
-          <b-table striped hover :items="items"></b-table>
-        </div>
         <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nome</th>
-              <th scope="col">Last</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Altura</th>
+              <th scope="col">Comprimento</th>
+              <th scope="col">Largura</th>
+              <th scope="col">Opções</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="product in products" :key="product.id">
-              <th scope="row">1</th>
-              <td>{{product.id}}</td>
+              <th scope="row">{{product.id}}</th>
               <td>{{product.nome}}</td>
+              <td>{{product.peso}}</td>
+              <td>{{product.altura}}</td>
+              <td>{{product.comprimento}}</td>
+              <td>{{product.largura}}</td>
+              <td>
+                <b-button @click="editar(product)" variant="outline-primary" class="btneditar">
+                  <b-icon icon="pencil-square" aria-hidden="true"></b-icon>
+                </b-button>
+                <b-button @click="remover(product)" variant="outline-danger" class="btndeletar">
+                  <b-icon icon="trash" aria-hidden="true"></b-icon>
+                </b-button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -33,17 +45,11 @@
 <script>
 export default {
   name: "ListComponent",
-  props: { products: Array },
-  data() {
-    return {
-      items: [
-        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
-        { age: 21, first_name: "Larsen", last_name: "Shaw" },
-        { age: 89, first_name: "Geneva", last_name: "Wilson" },
-        { age: 38, first_name: "Jami", last_name: "Carney" }
-      ]
-    };
-  }
+  props: { products: Array }
+
+  // <div>
+  //<b-table striped hover :items="products"></b-table>
+  //</div>
 };
 </script>
 
