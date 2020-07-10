@@ -1,17 +1,23 @@
 <template>
-  <DashBoardComponent>
+  <DashBoardComponent :showDismissibleAlert="showDismissibleAlert">
     <div slot="slot-pages" class="content-pages">
       <div class="main">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
         <div class="login">
           <div class="content-login">
             <div>
               <header>
                 <h5>Cadastro de Produtos</h5>
               </header>
-              <!--<div class="mt-2">Nome do Produto: {{ text }}</div>-->
+              <ul>
+                <li v-for="(erro, index) of errors" :key="index">
+                  campo
+                  <b>{{erro.field}}</b>
+                  - {{erro.defaultMessage}}
+                </li>
+              </ul>
               <form @submit.prevent="salvar" class="form">
-                <input type="text" name="email" id="email" />
                 <b-form-input
                   class="input"
                   v-model="product.nome"
@@ -21,16 +27,13 @@
                 <b-form-input class="input" v-model="product.altura" placeholder="Comprimento"></b-form-input>
                 <b-form-input class="input" v-model="product.comprimento" placeholder="Altura"></b-form-input>
                 <b-form-input class="input" v-model="product.largura" placeholder="Largura"></b-form-input>
-                <b-button variant="danger">
+                <b-button variant="danger" @click="paginaPrincipal()">
                   Cancelar
                   <b-icon icon="chevron-bar-left" aria-hidden="true"></b-icon>
                 </b-button>
                 <b-button variant="success" @click="salvar()">
                   Salvar
                   <b-icon icon="check2" aria-hidden="true"></b-icon>
-                </b-button>
-                <b-button variant="outline-info" class="mb-2">
-                  <b-icon icon="power" aria-hidden="true"></b-icon>Logout
                 </b-button>
               </form>
             </div>
@@ -52,24 +55,80 @@ export default {
   data() {
     return {
       product: {
+        id: "",
         nome: "",
         peso: "",
         altura: "",
         comprimento: "",
         largura: ""
-      }
+      },
+      errors: [],
+      showDismissibleAlert: false
     };
+  },
+  mounted() {
+    if (this.$route.query.id > 0) {
+      Product.carregar(this.$route.query.id).then(resposta => {
+        console.log(resposta);
+        this.product = resposta.data;
+      });
+    }
   },
   methods: {
     salvar() {
-      Product.salvar(this.product).then(response => {
-        if (response.status == 200) {
-          this.$router.push({ name: "home" });
-        } else {
-          alert("Ocorreu um erro ao salvar o produto");
-          console.error("Ocorreu um erro na API.");
-        }
-      });
+      if (!this.product.id) {
+        Product.salvar(this.product)
+          .then(resposta => {
+            console.log(resposta);
+            this.product = {};
+            this.showDismissibleAlert = true;
+            this.paginaPrincipal();
+            this.errors = {};
+          })
+          .catch(e => {
+            console.log(e.response);
+            alert("Campos Obrigatórios não informados!");
+            this.errors = e.response.data.errors;
+          });
+      } else {
+        Product.atualizar(this.product)
+          .then(resposta => {
+            console.log(resposta);
+            this.product = {};
+            this.errors = {};
+            alert("Atualizado com sucesso!");
+            this.paginaPrincipal();
+          })
+          .catch(e => {
+            this.errors = e.response.data.errors;
+            alert("Campos Obrigatórios não informados!");
+          });
+      }
+    },
+
+    editar(product) {
+      this.product = product;
+    },
+
+    remover(product) {
+      if (confirm("Deseja excluir o produto?")) {
+        Product.apagar(product)
+          .then(resposta => {
+            console.log(resposta);
+            this.listar();
+            this.errors = {};
+          })
+          .catch(e => {
+            alert("Campos Obrigatórios não informados!");
+            this.errors = e.response.data.errors;
+          });
+      }
+    },
+    paginaPrincipal() {
+      this.$router.push(
+        { name: "home" },
+        { queryParams: this.showDismissibleAlert }
+      );
     }
   }
 };

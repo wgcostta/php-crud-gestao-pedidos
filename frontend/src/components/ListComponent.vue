@@ -45,7 +45,14 @@
 <script>
 export default {
   name: "ListComponent",
-  props: { products: Array }
+  props: { products: Array },
+  methods: {
+    editar(product) {
+      //this.product = product;
+      this.$router.push("/product?id=" + product.id);
+      //this.$router.push({ name: "product" }, { queryParams: product });
+    }
+  }
 
   // <div>
   //<b-table striped hover :items="products"></b-table>

@@ -13,12 +13,19 @@ export default {
                 }*/
     },
 
+    carregar: (id) => {
+
+        return http.get('product/' + id);
+
+    },
+
     salvar: (product) => {
         return http.post('product', product);
     },
 
     atualizar: (product) => {
-        return http.put('product', product);
+        let urlEnvio = 'product/' + product.id + '/update';
+        return http.post(urlEnvio, product);
     },
 
     apagar: (product) => {

@@ -5,7 +5,7 @@
     </div>
     <div class="content-right">
       <div class="navbar">
-        <NavBarComponent />
+        <NavBarComponent :showDismissibleAlert="showDismissibleAlert" />
       </div>
       <div class="pages">
         <slot name="slot-pages"></slot>
@@ -20,6 +20,11 @@ import NavBarComponent from "./NavBarComponent";
 
 export default {
   name: "DashBoardComponent",
+  data() {
+    return {
+      showDismissibleAlert: false
+    };
+  },
   components: {
     SideBarComponent,
     NavBarComponent
