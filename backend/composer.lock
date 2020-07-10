@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7aa6df30a1ec85bae8d498aa7d7e5e89",
+    "content-hash": "8e68a6c03e44e550f3b1d9b9270a6d4a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -475,6 +475,65 @@
                 "trusted proxy"
             ],
             "time": "2020-06-23T01:36:47+00:00"
+        },
+        {
+            "name": "flyingluscas/correios-php",
+            "version": "v2.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flyingluscas/correios-php.git",
+                "reference": "6459473c848053c5ded586ca3c4f3b66e69020db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flyingluscas/correios-php/zipball/6459473c848053c5ded586ca3c4f3b66e69020db",
+                "reference": "6459473c848053c5ded586ca3c4f3b66e69020db",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.2",
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "~0.3",
+                "phpunit/phpunit": "~5.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FlyingLuscas\\Correios\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Pires",
+                    "email": "lucas.pires.mattos@gmail.com",
+                    "homepage": "https://github.com/flyingluscas",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Uma maneira fácil de interagir com as principais funcionalidades dos Correios.",
+            "homepage": "https://github.com/flyingluscas/correios-php",
+            "keywords": [
+                "calculo",
+                "cep",
+                "correios",
+                "correios-php",
+                "flyingluscas",
+                "frete",
+                "rastreio"
+            ],
+            "time": "2019-10-13T21:10:22+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
