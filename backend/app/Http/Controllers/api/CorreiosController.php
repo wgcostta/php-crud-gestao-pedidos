@@ -13,7 +13,7 @@ class CorreiosController extends Controller
 {
     public function store(Request $request)
     {
-        
+      
         $ceporigem   = $request->input('ceporigem');
         $cepdestino  = $request->input('cepdestino');
         $servico     = $request->input('servico');
