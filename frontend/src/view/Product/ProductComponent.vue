@@ -11,6 +11,7 @@
               </header>
               <!--<div class="mt-2">Nome do Produto: {{ text }}</div>-->
               <div class="form">
+                <input type="text" name="email" id="email" />
                 <b-form-input class="input" v-model="text" placeholder="Descrição do Produto"></b-form-input>
                 <b-form-input class="input" v-model="text" placeholder="Peso"></b-form-input>
                 <b-form-input class="input" v-model="text" placeholder="Comprimento"></b-form-input>
