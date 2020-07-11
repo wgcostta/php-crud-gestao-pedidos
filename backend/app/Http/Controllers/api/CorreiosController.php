@@ -30,8 +30,6 @@ class CorreiosController extends Controller
         ->destination($cepdestino)
         ->services(Service::SEDEX, Service::PAC)
         ->item($largura, $altura, $comprimento, $peso, $quantidade) // largura, altura, comprimento, peso e quantidade
-        ->item(16, 16, 16, .3, 3) // largura, altura, comprimento, peso e quantidade
-        ->item(16, 16, 16, .3, 2) // largura, altura, comprimento, peso e quantidade
         ->calculate();
         }
 }
