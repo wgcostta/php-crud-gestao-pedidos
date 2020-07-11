@@ -25,41 +25,46 @@
                 </li>
               </ul>
               <form @submit.prevent="salvar" class="form">
-                <b-form-group
-                  class="input"
-                  label-cols-sm="3"
-                  label="Descrição:"
-                  label-align-sm="right"
-                  label-for="nested-city"
-                >
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="1"
+                    label="Descrição:"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
+
                   <b-form-input
                     class="input"
                     v-model="product.nome"
                     placeholder="Descrição do Produto"
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   />
-                </b-form-group>
-                <b-form-group
-                  class="input"
-                  label-cols-sm="3"
-                  label="Peso:"
-                  label-align-sm="right"
-                  label-for="nested-city"
-                >
+                </div>
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="2"
+                    label="Peso:"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
                   <b-form-input
                     type="number"
+                    class="input"
                     v-model="product.peso"
                     placeholder="Peso"
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   />
-                </b-form-group>
-                <b-form-group
-                  class="input"
-                  label-cols-sm="3"
-                  label="Comprimento:"
-                  label-align-sm="right"
-                  label-for="nested-city"
-                >
+                </div>
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="3"
+                    label="Comprimento:"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
                   <b-form-input
                     type="number"
                     class="input"
@@ -67,14 +72,15 @@
                     placeholder="Comprimento"
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   />
-                </b-form-group>
-                <b-form-group
-                  class="input"
-                  label-cols-sm="3"
-                  label="Altura:"
-                  label-align-sm="right"
-                  label-for="nested-city"
-                >
+                </div>
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="4"
+                    label="Altura:"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
                   <b-form-input
                     type="number"
                     class="input"
@@ -82,15 +88,15 @@
                     placeholder="Altura"
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   />
-                </b-form-group>
-
-                <b-form-group
-                  class="input"
-                  label-cols-sm="3"
-                  label="Largura:"
-                  label-align-sm="right"
-                  label-for="nested-city"
-                >
+                </div>
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="3"
+                    label="Largura:"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
                   <b-form-input
                     type="number"
                     class="input"
@@ -98,7 +104,7 @@
                     placeholder="Largura"
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   >{{product.largura}}</b-form-input>
-                </b-form-group>
+                </div>
                 <b-button variant="success" @click="salvar()">
                   Salvar
                   <b-icon icon="check2" aria-hidden="true"></b-icon>
@@ -186,10 +192,6 @@ export default {
             });
         }
       }
-    },
-
-    editar(product) {
-      this.product = product;
     },
 
     paginaPrincipal() {
