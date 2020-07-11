@@ -15,6 +15,7 @@ class QuotationsController extends Controller
         $this->objProduct = new Product();
         $this->objQuotations = new Quotations;
     }
+    
     public function index()
     {
         return Quotations::all();

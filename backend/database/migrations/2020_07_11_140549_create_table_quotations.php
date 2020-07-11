@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuotationsTable extends Migration
+class CreateTableQuotations extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,10 @@ class CreateQuotationsTable extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->integer('idProduct')->unsigned();            
-            $table->string('cepOrigem')->nullable($value = true); 
-            $table->string('cepDestino')->nullable($value = true); 
+            $table->integer('id_orders')->unsigned();
+            $table->integer('codigoservico')->default(0);
+            $table->double('valorfrete',10,2)->default(0);
+            $table->string('prazoentrega')->nullable($value = true); 
             $table->timestamps();
         });
     }

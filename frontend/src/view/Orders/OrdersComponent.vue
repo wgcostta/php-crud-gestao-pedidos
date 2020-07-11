@@ -7,27 +7,74 @@
           <div class="content-login">
             <div>
               <header>
-                <h5>Cadastro de Produtos</h5>
+                <div class="row">
+                  <h4>Cadastro de Pedidos</h4>
+                </div>
+                <div class="row">
+                  <h5>{{product.nome}}</h5>
+                </div>
               </header>
-              <!--<div class="mt-2">Nome do Produto: {{ text }}</div>-->
-              <div class="form">
-                <b-form-input class="input" v-model="text" placeholder="Descrição do Produto"></b-form-input>
-                <b-form-input class="input" v-model="text" placeholder="Peso"></b-form-input>
-                <b-form-input class="input" v-model="text" placeholder="Comprimento"></b-form-input>
-                <b-form-input class="input" v-model="text" placeholder="Altura"></b-form-input>
-                <b-form-input class="input" v-model="text" placeholder="Largura"></b-form-input>
-                <b-button variant="danger">
-                  Cancelar
-                  <b-icon icon="chevron-bar-left" aria-hidden="true"></b-icon>
-                </b-button>
+              <form @submit.prevent="salvar" class="form">
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="1"
+                    label="CEP(Origem):"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
+
+                  <b-form-input
+                    class="input"
+                    type="number"
+                    v-model="ordered.ceporigem"
+                    placeholder="11111111"
+                    v-on:keyup.enter="$event.target.nextElementSibling.focus()"
+                  />
+                </div>
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="1"
+                    label="CEP(Destino):"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
+
+                  <b-form-input
+                    class="input"
+                    type="number"
+                    v-model="ordered.cepdestino"
+                    placeholder="11111111"
+                    v-on:keyup.enter="$event.target.nextElementSibling.focus()"
+                  />
+                </div>
+                <div class="row">
+                  <b-form-group
+                    class="label"
+                    label-cols-sm="1"
+                    label="Quantidade:"
+                    label-align-sm="right"
+                    label-for="nested-city"
+                  />
+
+                  <b-form-input
+                    class="input"
+                    type="number"
+                    v-model="ordered.quantidade"
+                    placeholder="Quantidade"
+                    v-on:keyup.enter="$event.target.nextElementSibling.focus()"
+                  />
+                </div>
                 <b-button variant="success" @click="salvar()">
                   Salvar
                   <b-icon icon="check2" aria-hidden="true"></b-icon>
                 </b-button>
-                <b-button variant="outline-info" class="mb-2">
-                  <b-icon icon="power" aria-hidden="true"></b-icon>Logout
+                <b-button variant="danger" @click="paginaPrincipal()">
+                  Cancelar
+                  <b-icon icon="chevron-bar-left" aria-hidden="true"></b-icon>
                 </b-button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -38,13 +85,43 @@
 
 <script>
 import DashBoardComponent from "../Home/DashBoardComponent";
+import Product from "../../services/productService";
 export default {
   name: "OrdersComponent",
   components: {
     DashBoardComponent
+  },
+  data() {
+    return {
+      product: {
+        id: "",
+        nome: "",
+        peso: "",
+        altura: "",
+        comprimento: "",
+        largura: ""
+      },
+      ordered: {
+        id: "",
+        id_product: "",
+        ceporigem: "",
+        cepdestino: "",
+        quantidade: ""
+      }
+    };
+  },
+  mounted() {
+    if (this.$route.query.id > 0) {
+      Product.carregar(this.$route.query.id).then(resposta => {
+        console.log(resposta);
+        this.product = resposta.data;
+      });
+    }
+  },
+  methods: {
+    salvar() {}
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style lang="scss" src="./OrdersComponent.scss" scoped />

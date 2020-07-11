@@ -38,6 +38,7 @@
                     class="input"
                     v-model="product.nome"
                     placeholder="Descrição do Produto"
+                    onkeyup="this.value = this.value.toUpperCase();"
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   />
                 </div>

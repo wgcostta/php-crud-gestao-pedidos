@@ -52,7 +52,7 @@ export default {
   props: { products: Array },
   methods: {
     gerarPedido(product) {
-      console.log(product);
+      this.$router.push("/orders?id=" + product.id);
     },
     editar(product) {
       this.$router.push("/product?id=" + product.id);

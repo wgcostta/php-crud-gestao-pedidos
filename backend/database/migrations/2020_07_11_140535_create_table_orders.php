@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateTableOrders extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('idQuotations')->unsigned();
-            $table->integer('codigoServico')->default(0);
-            $table->double('valorFrete',10,2)->default(0);
-            $table->string('prazoEntrega')->nullable($value = true); 
+            $table->integer('id_product')->unsigned();            
+            $table->string('ceporigem')->nullable($value = true); 
+            $table->string('cepdestino')->nullable($value = true); 
+            $table->integer('quantidade');
             $table->timestamps();
         });
     }
