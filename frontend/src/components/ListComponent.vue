@@ -26,11 +26,14 @@
               <td>{{product.comprimento}}</td>
               <td>{{product.largura}}</td>
               <td>
-                <b-button @click="editar(product)" variant="outline-primary" class="btneditar">
-                  <b-icon icon="pencil-square" aria-hidden="true"></b-icon>
+                <b-button @click="gerarPedido(product)" variant="outline-secondary" class="btn">
+                  <b-icon icon="arrow-clockwise" aria-hidden="true" />Gerar Pedido
                 </b-button>
-                <b-button @click="remover(product)" variant="outline-danger" class="btndeletar">
-                  <b-icon icon="trash" aria-hidden="true"></b-icon>
+                <b-button @click="editar(product)" variant="outline-primary" class="btn">
+                  <b-icon icon="pencil-square" aria-hidden="true" />
+                </b-button>
+                <b-button @click="remover(product)" variant="outline-danger" class="btn">
+                  <b-icon icon="trash" aria-hidden="true" />
                 </b-button>
               </td>
             </tr>
@@ -48,6 +51,9 @@ export default {
   name: "ListComponent",
   props: { products: Array },
   methods: {
+    gerarPedido(product) {
+      console.log(product);
+    },
     editar(product) {
       this.$router.push("/product?id=" + product.id);
     },

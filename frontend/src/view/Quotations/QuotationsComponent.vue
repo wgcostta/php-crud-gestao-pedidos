@@ -1,21 +1,27 @@
 <template>
   <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
-      <div class="row">
-        <div class="col-12 col-md-6">
-          <b-form-input class="input" v-model="frete.ceporigem" placeholder="CEP Origem"></b-form-input>
-          <b-form-input class="input" v-model="frete.cepdestino" placeholder="Cep Destino"></b-form-input>
-          <b-form-input class="input" v-model="frete.servico" placeholder="Serviço"></b-form-input>
-          <b-form-input class="input" v-model="frete.largura" placeholder="largura"></b-form-input>
-          <b-form-input class="input" v-model="frete.altura" placeholder="altura"></b-form-input>
-          <b-form-input class="input" v-model="frete.comprimento" placeholder="comprimento"></b-form-input>
-          <b-form-input class="input" v-model="frete.peso" placeholder="Peso"></b-form-input>
-          <b-button variant="success" @click="enviar()">
-            Enviar
-            <b-icon icon="check2" aria-hidden="true"></b-icon>
-          </b-button>
-          <div>
-            <b-table striped hover :items="consulta"></b-table>
+      <div class="main">
+        <div class="login">
+          <div class="content-login">
+            <div class="col-12 col-md-6">
+              <b-form-input class="input" v-model="frete.ceporigem" placeholder="CEP Origem"></b-form-input>
+
+              <b-form-input class="input" v-model="frete.cepdestino" placeholder="Cep Destino"></b-form-input>
+
+              <b-form-input class="input" v-model="frete.servico" placeholder="Serviço"></b-form-input>
+              <b-form-input class="input" v-model="frete.largura" placeholder="largura"></b-form-input>
+              <b-form-input class="input" v-model="frete.altura" placeholder="altura"></b-form-input>
+              <b-form-input class="input" v-model="frete.comprimento" placeholder="comprimento"></b-form-input>
+              <b-form-input class="input" v-model="frete.peso" placeholder="Peso"></b-form-input>
+              <b-button variant="success" @click="enviar()">
+                Enviar
+                <b-icon icon="check2" aria-hidden="true"></b-icon>
+              </b-button>
+              <div class="content-login">
+                <b-table striped hover :items="consulta"></b-table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -67,6 +73,7 @@ export default {
         })
         .catch(e => {
           console.log(e.response);
+          this.consulta = {};
           alert("Campos Obrigatórios não informados!");
         });
     }

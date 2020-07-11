@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        return response() -> Product::create($request->all());
+        return Product::create($request->all());
     }
 
     public function show($id)
