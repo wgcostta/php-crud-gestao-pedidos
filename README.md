@@ -1,11 +1,15 @@
 # APIs para gestão de produtos, pedidos e cotação de frete para lojas
 
-Subir frontend:
+Configurações backend:
+.env -> Conexão do Banco
+Create database laravel;
+php artisan serve
+
+Configurações FrontEnd:
+config.js
+baseURL: 'http://127.0.0.1:8000/api'
 yarn install
 yarn serve
-
-subir o backend:
-artisan serve
 
 Teste de Conhecimentos - Programador PHP
 Objetivo

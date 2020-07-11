@@ -7,7 +7,7 @@ export default {
     consultarFrete: (frete) => {
         console.log(JSON.stringify(frete));
 
-        return http.post('http://127.0.0.1:8000/api/correios', frete);
+        return http.post('correios', frete);
 
     },
 
