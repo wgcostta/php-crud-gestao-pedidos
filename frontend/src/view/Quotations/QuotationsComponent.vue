@@ -4,12 +4,7 @@
       <div class="main">
         <div class="login">
           <div class="content-login">
-            <table
-              id="dtBasicExample"
-              class="table table-striped table-sm"
-              cellspacing="3"
-              width="100%"
-            >
+            <table class="table table-striped table-sm" cellspacing="3" width="100%">
               <thead>
                 <tr>
                   <th scope="col">Produto</th>
@@ -29,7 +24,24 @@
               Solicitar Cotação
               <b-icon icon="check2" aria-hidden="true"></b-icon>
             </b-button>
-            <b-table striped hover :items="consulta"></b-table>
+            <table class="table table-striped table-sm" cellspacing="3" width="100%">
+              <thead>
+                <tr>
+                  <th scope="col">Serviço</th>
+                  <th scope="col">Valor do Frete</th>
+                  <th scope="col">Prazo de Entrega</th>
+                  <th scope="col">Retorno:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="ret in consulta" :key="ret.code">
+                  <th scope="row">{{ret.name}}</th>
+                  <td>{{ret.price}}</td>
+                  <td>{{ret.deadline}}</td>
+                  <td>{{ret.error}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -54,9 +66,17 @@ export default {
       this.carregarObjetos(this.$route.query.id);
     }
   },
+
   data() {
     return {
-      consulta: [],
+      retorno: {
+        code: "",
+        deadline: "",
+        name: "",
+        price: "",
+        error: []
+      },
+      consulta: Array,
       quotation: {
         id: "",
         id_orders: "",
@@ -114,7 +134,24 @@ export default {
         });
     },
     salvar() {
-      console.log(this.quotation);
+      if (!this.quotation.id) {
+        for (var i = 0; i < this.consulta.length; i++) {
+          this.quotation.id_orders = this.ordered.id;
+          this.quotation.codigoservico = this.consulta[i].code;
+          this.quotation.valorfrete = this.consulta[i].price;
+          this.quotation.prazoentrega = this.consulta[i].deadline;
+
+          if (i == 0) {
+            Quotations.salvarSedex(this.quotation).then(resposta => {
+              console.log(resposta);
+            });
+          } else {
+            Quotations.salvarPac(this.quotation).then(resposta => {
+              console.log(resposta);
+            });
+          }
+        }
+      }
     },
     carregarObjetos(id) {
       Ordered.carregar(id).then(resposta => {
