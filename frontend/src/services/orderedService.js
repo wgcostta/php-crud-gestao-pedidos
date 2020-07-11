@@ -8,6 +8,12 @@ export default {
         return http.post('orders', ordered);
     },
 
+    carregar: (id) => {
+
+        return http.get('orders/' + id);
+
+    },
+
     validationOrdered: (ordered) => {
         let $mensagem = '';
         if (

@@ -25,11 +25,23 @@ class CorreiosController extends Controller
 
         $correios = new Client;
 
-        return $correios->freight()
-        ->origin($ceporigem)
-        ->destination($cepdestino)
-        ->services(Service::SEDEX, Service::PAC)
-        ->item($largura, $altura, $comprimento, $peso, $quantidade) // largura, altura, comprimento, peso e quantidade
-        ->calculate();
+        if($servico == ''){
+            return $correios->freight()
+            ->origin($ceporigem)
+            ->destination($cepdestino)
+            ->services(Service::SEDEX, Service::PAC)
+            ->item($largura, $altura, $comprimento, $peso, $quantidade) 
+            ->calculate();
         }
+        else{
+            return $correios->freight()
+            ->origin($ceporigem)
+            ->destination($cepdestino)
+            ->services($service)
+            ->item($largura, $altura, $comprimento, $peso, $quantidade) 
+            ->calculate();
+        }
+
+       
+    }
 }

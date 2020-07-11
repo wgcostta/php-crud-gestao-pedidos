@@ -23,7 +23,7 @@ class QuotationsController extends Controller
 
     public function store(Request $request)
     {
-        Quotations::create($request->all());
+        return Quotations::create($request->all());
     }
 
     public function show($id)
