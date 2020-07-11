@@ -17,6 +17,8 @@
                 <div class="row">
                   <h4>Cadastro de Pedidos</h4>
                 </div>
+              </header>
+              <header>
                 <div class="row">
                   <h5>{{product.nome}}</h5>
                 </div>
@@ -73,6 +75,11 @@
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   />
                 </div>
+                <b-button variant="primary" @click="gerarCotacao()">
+                  Gerar Cotação
+                  <b-icon icon="check2" aria-hidden="true"></b-icon>
+                </b-button>
+
                 <b-button variant="success" @click="salvar()">
                   Salvar
                   <b-icon icon="check2" aria-hidden="true"></b-icon>
@@ -102,6 +109,8 @@ export default {
   data() {
     return {
       showDismissibleAlert: false,
+      pedido: false,
+
       mensagem: "",
       product: {
         id: "",
@@ -131,14 +140,21 @@ export default {
   methods: {
     salvar() {
       this.mensagem = Ordered.validationOrdered(this.ordered);
+
       if (this.mensagem == "") {
         this.ordered.id_product = this.product.id;
         Ordered.salvar(this.ordered)
           .then(resposta => {
             console.log(resposta);
-            // this.product = {};
-            //this.paginaPrincipal();
-            //  this.errors = {};
+            this.ordered = resposta.data;
+
+            if (!this.pedido) {
+              this.paginaPrincipal();
+            } else {
+              if (this.ordered.id > 0) {
+                this.$router.push("/quotations?id=" + this.ordered.id);
+              }
+            }
           })
           .catch(e => {
             console.log(e.response);
@@ -148,6 +164,16 @@ export default {
       } else {
         this.showDismissibleAlert = this.mensagem != "";
       }
+    },
+    paginaPrincipal() {
+      this.$router.push(
+        { name: "home" },
+        { queryParams: this.showDismissibleAlert }
+      );
+    },
+    gerarCotacao() {
+      this.pedido = true;
+      this.salvar();
     }
   }
 };

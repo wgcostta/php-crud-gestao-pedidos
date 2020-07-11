@@ -5,7 +5,6 @@ export default {
     listar: () => { },
 
     salvar: (ordered) => {
-        console.log(JSON.stringify(ordered))
         return http.post('orders', ordered);
     },
 

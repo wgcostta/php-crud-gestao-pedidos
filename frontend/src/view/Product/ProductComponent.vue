@@ -106,13 +106,13 @@
                     v-on:keyup.enter="$event.target.nextElementSibling.focus()"
                   >{{product.largura}}</b-form-input>
                 </div>
-                <b-button variant="success" @click="salvar()">
-                  Salvar
-                  <b-icon icon="check2" aria-hidden="true"></b-icon>
-                </b-button>
                 <b-button variant="danger" @click="paginaPrincipal()">
                   Cancelar
                   <b-icon icon="chevron-bar-left" aria-hidden="true"></b-icon>
+                </b-button>
+                <b-button variant="success" @click="salvar()">
+                  Salvar
+                  <b-icon icon="check2" aria-hidden="true"></b-icon>
                 </b-button>
               </form>
             </div>

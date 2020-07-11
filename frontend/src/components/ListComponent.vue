@@ -1,11 +1,16 @@
 <template>
   <div class="lists">
     <div class="top">
-      <p>Produtos</p>
+      <p>Listagem de Produtos</p>
       <hr />
 
       <div class="content">
-        <table class="table table-striped">
+        <table
+          id="dtBasicExample"
+          class="table table-striped table-sm"
+          cellspacing="3"
+          width="100%"
+        >
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -50,6 +55,7 @@ import Product from "../services/productService";
 export default {
   name: "ListComponent",
   props: { products: Array },
+
   methods: {
     gerarPedido(product) {
       this.$router.push("/orders?id=" + product.id);

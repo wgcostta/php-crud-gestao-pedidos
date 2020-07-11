@@ -38,7 +38,7 @@
 }
 
 
-mt-2,button{
+mt-2{
     padding: 2px;
     margin:  2px 8px 8px 2px;
 }
@@ -64,7 +64,9 @@ mt-2,button{
 }
 
 button{
-    float:right
+    float:right;
+    padding: 2px;
+    margin:  2px 2px 2px 2px;
 }
 
 .form{
