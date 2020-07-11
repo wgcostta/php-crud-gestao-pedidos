@@ -13,14 +13,10 @@ class OrdersController extends Controller
    
     public function index()
     {
-        
-        $orders =  DB::table('orders')
+        return DB::table('orders')
         ->join('products', 'orders.id_product', '=', 'products.id')
         ->select('orders.*', 'products.nome', 'products.peso', 'products.comprimento', 'products.altura', 'products.largura')
-        ->limit(1)
-        ->first(1);
-        return Orders::$orders;
-    
+        ->get(1);
     }
 
     public function store(Request $request)
@@ -35,6 +31,7 @@ class OrdersController extends Controller
         ->join('products', 'orders.id_product', '=', 'products.id')
         ->select('orders.*', 'products.nome', 'products.peso', 'products.comprimento', 'products.altura', 'products.largura')
         ->where('orders.id', '=', $id)
+        ->limit(1)
         ->get();
     }
 
