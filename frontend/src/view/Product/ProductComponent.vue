@@ -148,46 +148,8 @@ export default {
     }
   },
   methods: {
-    validarPeso() {
-      this.mensagem = "";
-      this.showDismissibleAlert = false;
-
-      if (
-        this.product.peso == "" ||
-        this.product.nome == "" ||
-        this.product.altura == "" ||
-        this.product.comprimento == "" ||
-        this.product.largura == ""
-      ) {
-        this.mensagem = "Todos os Campos devem ser informados";
-      } else {
-        if (this.product.peso > 30) {
-          this.mensagem = "Peso deve ser até 30 kg";
-          this.showDismissibleAlert = true;
-        } else if (
-          this.product.comprimento < 16 ||
-          this.product.comprimento > 105
-        ) {
-          this.mensagem = "Informe um comprimento de 16 cm até 105 cm";
-        } else if (this.product.largura < 11 || this.product.largura > 105) {
-          this.mensagem = "Informe uma largura de 11 cm até 105 cm";
-        } else if (this.product.altura < 2 || this.product.altura > 105) {
-          this.mensagem = "Informe uma altura de 2 cm até 105 cm";
-        } else {
-          let dimensoes =
-            Number(this.product.comprimento) +
-            Number(this.product.largura) +
-            Number(this.product.altura);
-          if (dimensoes > 200) {
-            this.mensagem =
-              "A soma das dimensões não pode ultrapassar 200 cm. Dimensões atuais: " +
-              dimensoes;
-          }
-        }
-        /*- Comprimento: 16cm à 105cm; Altura: 2cm à 105cm; Largura: 11cm à 105cm;
-        - Soma máxima das dimensões: 200cm.
-        - Limite de peso: 30kg. */
-      }
+    validationProduct() {
+      this.mensagem = Product.validationProduct(this.product);
 
       if (this.mensagem != "") {
         this.showDismissibleAlert = this.mensagem != "";
@@ -195,13 +157,12 @@ export default {
       } else return true;
     },
     salvar() {
-      if (this.validarPeso()) {
+      if (this.validationProduct()) {
         if (!this.product.id) {
           Product.salvar(this.product)
             .then(resposta => {
               console.log(resposta);
               this.product = {};
-              this.showDismissibleAlert = true;
               this.paginaPrincipal();
               this.errors = {};
             })
