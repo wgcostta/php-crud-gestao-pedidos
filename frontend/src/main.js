@@ -8,6 +8,8 @@ import QuotationsComponent from './view/Quotations/QuotationsComponent'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import HomeOrdersComponent from './view/Orders/HomeOrdersComponent'
+import HomeQuotationsComponent from './view/Quotations/HomeQuotationsComponent'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
@@ -21,7 +23,9 @@ const routes = [
   { path: '/', name: 'home', component: HomeComponent },
   { path: '/product', name: 'product', component: ProductComponent },
   { path: '/orders', name: 'orders', component: OrdersComponent },
-  { path: '/quotations', name: 'quotations', component: QuotationsComponent }
+  { path: '/quotations', name: 'quotations', component: QuotationsComponent },
+  { path: '/orderslist', name: 'orderslist', component: HomeOrdersComponent },
+  { path: '/quotationslist', name: 'quotationslist', component: HomeQuotationsComponent }
 ]
 
 const router = new VueRouter({

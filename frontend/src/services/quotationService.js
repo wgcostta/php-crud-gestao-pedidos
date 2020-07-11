@@ -2,10 +2,11 @@ import { http } from './config';
 
 export default {
 
-    listar: () => { },
+    listar: () => {
+        return http.get('quotations');
+    },
 
     consultarFrete: (frete) => {
-        //console.log(JSON.stringify(frete));
 
         return http.post('correios', frete);
 

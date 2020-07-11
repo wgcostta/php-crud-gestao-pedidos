@@ -9,8 +9,12 @@
         <b-list-group>
           <b-list-group-item router-link :to="{ name: 'home' }" class="list">Produtos</b-list-group-item>
           <b-list-group-item router-link :to="{ name: 'product' }" class="list">Cadastrar Produtos</b-list-group-item>
-          <b-list-group-item router-link :to="{ name: 'orders' }" class="list">Listar Pedidos</b-list-group-item>
-          <b-list-group-item router-link :to="{ name: 'quotations' }" class="list">Listar Cotações</b-list-group-item>
+          <b-list-group-item router-link :to="{ name: 'orderslist' }" class="list">Listar Pedidos</b-list-group-item>
+          <b-list-group-item
+            router-link
+            :to="{ name: 'quotationslist' }"
+            class="list"
+          >Listar Cotações</b-list-group-item>
         </b-list-group>
       </div>
     </div>

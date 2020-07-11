@@ -13,7 +13,7 @@
                 </tr>
               </thead>
               <tbody>
-                <th scope="row">{{product.nome}}</th>
+                <th scope="row">{{ordered.nome}}</th>
                 <td>{{ordered.ceporigem}}</td>
                 <td>{{ordered.cepdestino}}</td>
               </tbody>
@@ -54,7 +54,6 @@
 import DashBoardComponent from "../Home/DashBoardComponent";
 import Quotations from "../../services/quotationService";
 import Ordered from "../../services/orderedService";
-import Product from "../../services/productService";
 
 export default {
   name: "QuotationsComponent",
@@ -84,30 +83,18 @@ export default {
         valorfrete: "",
         prazoentrega: ""
       },
-      frete: {
-        ceporigem: "",
-        cepdestino: "",
-        servico: "",
-        largura: "",
-        altura: "",
-        comprimento: "",
-        peso: "",
-        quantidade: 1
-      },
-      product: {
-        id: "",
-        nome: "",
-        peso: "",
-        altura: "",
-        comprimento: "",
-        largura: ""
-      },
       ordered: {
         id: "",
         id_product: "",
         ceporigem: "",
         cepdestino: "",
-        quantidade: ""
+        quantidade: "",
+        nome: "",
+        peso: "",
+        altura: "",
+        comprimento: "",
+        largura: "",
+        servico: ""
       },
       selected: "",
       options: [
@@ -119,9 +106,9 @@ export default {
   },
   methods: {
     enviar() {
-      this.frete.servico = this.selected;
-      console.log(this.frete);
-      Quotations.consultarFrete(this.frete)
+      this.ordered.servico = this.selected;
+      console.log(this.ordered);
+      Quotations.consultarFrete(this.ordered)
         .then(resposta => {
           console.log(resposta);
           this.consulta = resposta.data;
@@ -155,24 +142,8 @@ export default {
     },
     carregarObjetos(id) {
       Ordered.carregar(id).then(resposta => {
-        console.log(resposta);
-        this.ordered = resposta.data;
-
-        if (this.ordered.id_product > 0) {
-          Product.carregar(this.ordered.id_product).then(resposta => {
-            console.log(resposta);
-            this.product = resposta.data;
-
-            this.frete.ceporigem = this.ordered.ceporigem;
-            this.frete.cepdestino = this.ordered.cepdestino;
-            this.frete.servico = "";
-            this.frete.largura = this.product.largura;
-            this.frete.altura = this.product.altura;
-            this.frete.comprimento = this.product.comprimento;
-            this.frete.peso = this.product.peso;
-            this.frete.quantidade = this.ordered.quantidade;
-          });
-        }
+        this.ordered = resposta.data[0];
+        console.log(this.ordered);
       });
     }
   }

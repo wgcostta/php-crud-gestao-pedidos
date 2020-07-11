@@ -2,7 +2,9 @@ import { http } from './config';
 
 export default {
 
-    listar: () => { },
+    listar: () => {
+        return http.get('orders');
+    },
 
     salvar: (ordered) => {
         return http.post('orders', ordered);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Orders;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -12,7 +13,14 @@ class OrdersController extends Controller
    
     public function index()
     {
-        return Orders::all();
+        
+        $orders =  DB::table('orders')
+        ->join('products', 'orders.id_product', '=', 'products.id')
+        ->select('orders.*', 'products.nome', 'products.peso', 'products.comprimento', 'products.altura', 'products.largura')
+        ->limit(1)
+        ->first(1);
+        return Orders::$orders;
+    
     }
 
     public function store(Request $request)
@@ -22,7 +30,12 @@ class OrdersController extends Controller
 
     public function show($id)
     {
-        return Orders::findOrFail($id);
+        
+        return  DB::table('orders')
+        ->join('products', 'orders.id_product', '=', 'products.id')
+        ->select('orders.*', 'products.nome', 'products.peso', 'products.comprimento', 'products.altura', 'products.largura')
+        ->where('orders.id', '=', $id)
+        ->get();
     }
 
     public function update(Request $request, $id)
