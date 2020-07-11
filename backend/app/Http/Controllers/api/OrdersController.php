@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Orders;
 
 class OrdersController extends Controller
 {
@@ -16,7 +17,7 @@ class OrdersController extends Controller
 
     public function store(Request $request)
     {
-        Orders::create($request->all());
+        return Orders::create($request->all());
     }
 
     public function show($id)

@@ -1,6 +1,13 @@
 <template>
   <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
+      <b-alert
+        variant="warning"
+        dismissible
+        fade
+        :show="showDismissibleAlert"
+        @dismissed="showDismissibleAlert=false"
+      >{{mensagem}}</b-alert>
       <div class="main">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <div class="login">
@@ -86,6 +93,7 @@
 <script>
 import DashBoardComponent from "../Home/DashBoardComponent";
 import Product from "../../services/productService";
+import Ordered from "../../services/orderedService";
 export default {
   name: "OrdersComponent",
   components: {
@@ -93,6 +101,8 @@ export default {
   },
   data() {
     return {
+      showDismissibleAlert: false,
+      mensagem: "",
       product: {
         id: "",
         nome: "",
@@ -119,7 +129,26 @@ export default {
     }
   },
   methods: {
-    salvar() {}
+    salvar() {
+      this.mensagem = Ordered.validationOrdered(this.ordered);
+      if (this.mensagem == "") {
+        this.ordered.id_product = this.product.id;
+        Ordered.salvar(this.ordered)
+          .then(resposta => {
+            console.log(resposta);
+            // this.product = {};
+            //this.paginaPrincipal();
+            //  this.errors = {};
+          })
+          .catch(e => {
+            console.log(e.response);
+            alert("Campos Obrigatórios não informados!");
+            this.errors = e.response.data.errors;
+          });
+      } else {
+        this.showDismissibleAlert = this.mensagem != "";
+      }
+    }
   }
 };
 </script>
