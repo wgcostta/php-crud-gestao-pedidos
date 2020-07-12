@@ -4,9 +4,10 @@
 ### Configurações backend:
 
 ```
-
+Dentro da pasta do projeto, em \backend:
 .env -> Conexão do Banco
 Create database laravel;
+Executar no diretório \backend
 php artisan migrate
 php artisan serve
 
@@ -16,8 +17,8 @@ php artisan serve
 
 ```
 Configurações FrontEnd:
-config.js
-baseURL: 'http://127.0.0.1:8000/api'
+config.js -> Pode ser alterado a baseURL: 'http://127.0.0.1:8000/api'
+Executar no diretório \frontend
 yarn install
 yarn serve
 
