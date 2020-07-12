@@ -1,5 +1,6 @@
 <template>
   <div class="lists">
+    <AlertComponent :mensagem="mensagem" />
     <div class="top">
       <header>
         <h4>Listagem de Produtos</h4>
@@ -53,10 +54,19 @@
 
 <script>
 import Product from "../services/productService";
+import AlertComponent from "./AlertComponent";
 export default {
   name: "ListComponent",
-  props: { products: Array },
 
+  props: { products: Array },
+  components: {
+    AlertComponent
+  },
+  data() {
+    return {
+      mensagem: ""
+    };
+  },
   methods: {
     gerarPedido(product) {
       this.$router.push("/orders?id=" + product.id);
@@ -79,7 +89,7 @@ export default {
         })
         .catch(e => {
           console.log(e);
-          alert("Produto com pedidos vinculados");
+          this.mensagem = "Produto com pedidos vinculados";
         });
     }
   }

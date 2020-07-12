@@ -1,13 +1,8 @@
 <template>
   <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
-      <b-alert
-        variant="warning"
-        dismissible
-        fade
-        :show="showDismissibleAlert"
-        @dismissed="showDismissibleAlert=false"
-      >{{mensagem}}</b-alert>
+      <AlertComponent :mensagem="mensagem" />
+
       <div class="main">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <div class="login">
@@ -101,14 +96,16 @@
 import DashBoardComponent from "../Home/DashBoardComponent";
 import Product from "../../services/productService";
 import Ordered from "../../services/orderedService";
+import AlertComponent from "../../components/AlertComponent";
+
 export default {
   name: "OrdersComponent",
   components: {
-    DashBoardComponent
+    DashBoardComponent,
+    AlertComponent
   },
   data() {
     return {
-      showDismissibleAlert: false,
       pedido: "",
 
       mensagem: "",
@@ -151,7 +148,7 @@ export default {
             })
             .catch(e => {
               console.log(e.response);
-              alert("Campos Obrigatórios não informados!");
+              this.mensagem = "Campos Obrigatórios não informados!";
               this.errors = e.response.data.errors;
             });
         } else {
@@ -167,12 +164,10 @@ export default {
             })
             .catch(e => {
               console.log(e.response);
-              alert("Campos Obrigatórios não informados!");
+              this.mensagem = "Campos Obrigatórios não informados!";
               this.errors = e.response.data.errors;
             });
         }
-      } else {
-        this.showDismissibleAlert = this.mensagem != "";
       }
     },
     validarProximaEtapa() {
@@ -188,10 +183,7 @@ export default {
       this.pedido = "";
     },
     paginaPrincipal() {
-      this.$router.push(
-        { name: "home" },
-        { queryParams: this.showDismissibleAlert }
-      );
+      this.$router.push({ name: "home" });
     },
     gerarCotacao() {
       this.pedido = "cot";

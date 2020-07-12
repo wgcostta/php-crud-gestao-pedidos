@@ -171,7 +171,7 @@ export default {
             })
             .catch(e => {
               console.log(e.response);
-              alert("Campos Obrigatórios não informados!");
+              this.mensagem = "Campos Obrigatórios não informados!";
               this.errors = e.response.data.errors;
             });
         } else {
@@ -180,12 +180,12 @@ export default {
               console.log(resposta);
               this.product = {};
               this.errors = {};
-              alert("Atualizado com sucesso!");
+              this.mensagem = "Atualizado com sucesso!";
               this.paginaPrincipal();
             })
             .catch(e => {
               this.errors = e.response.data.errors;
-              alert("Campos Obrigatórios não informados!");
+              this.mensagem = "Campos Obrigatórios não informados!";
             });
         }
       }

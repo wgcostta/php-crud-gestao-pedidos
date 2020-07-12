@@ -1,6 +1,7 @@
 <template>
   <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
+      <AlertComponent :mensagem="mensagem" />
       <div class="main">
         <div class="login">
           <div class="content-login">
@@ -54,11 +55,13 @@
 import DashBoardComponent from "../Home/DashBoardComponent";
 import Quotations from "../../services/quotationService";
 import Ordered from "../../services/orderedService";
+import AlertComponent from "../../components/AlertComponent";
 
 export default {
   name: "QuotationsComponent",
   components: {
-    DashBoardComponent
+    DashBoardComponent,
+    AlertComponent
   },
   mounted() {
     if (this.$route.query.id > 0) {
@@ -68,6 +71,7 @@ export default {
 
   data() {
     return {
+      mensagem: "",
       retorno: {
         code: "",
         deadline: "",
@@ -117,7 +121,7 @@ export default {
         .catch(e => {
           console.log(e.response);
           this.consulta = {};
-          alert("Campos Obrigatórios não informados!");
+          this.memsagem = "Campos Obrigatórios não informados!";
         });
     },
     salvar() {
