@@ -38,6 +38,7 @@ class OrdersController extends Controller
     {
         $orders = Orders::findOrFail($id);
         $orders->update($request->all());
+        return Orders::findOrFail($id);
     }
 
     public function destroy($id)

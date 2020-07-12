@@ -144,6 +144,9 @@ export default {
             .then(resposta => {
               console.log(resposta);
               this.ordered = resposta.data;
+              if (this.pedido == "") {
+                this.pedido = "prod";
+              }
               this.validarProximaEtapa();
             })
             .catch(e => {
@@ -157,9 +160,7 @@ export default {
             .then(resposta => {
               console.log(resposta);
               this.ordered = resposta.data;
-              if (this.pedido == "") {
-                this.pedido = "prod";
-              }
+
               this.validarProximaEtapa();
             })
             .catch(e => {
@@ -178,7 +179,7 @@ export default {
       } else if (this.pedido == "prod") {
         this.paginaPrincipal();
       } else {
-        this.$router.push({ name: "orders" });
+        this.$router.push({ name: "orderslist" });
       }
       this.pedido = "";
     },

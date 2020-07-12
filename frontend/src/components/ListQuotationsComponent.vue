@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     gerarCotacao(quotation) {
-      this.$router.push("/orders?id=" + quotation.id_orders);
+      this.$router.push("/quotations?id=" + quotation.id_orders);
     },
 
     remover(quotation) {

@@ -79,15 +79,11 @@ export default {
         () => {
           Product.remover(product)
             .then(resposta => {
-              if (resposta.statuscode == 200) {
-                Product.listar()
-                  .then(resposta => {
-                    this.products = resposta.data;
-                  })
-                  .catch(e => {
-                    console.log(e);
-                  });
-              }
+              console.log(resposta);
+              Product.listar().then(resposta => {
+                console.log(resposta);
+                this.products = resposta.data;
+              });
             })
             .catch(e => {
               console.log(e);
