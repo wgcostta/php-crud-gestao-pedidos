@@ -65,9 +65,9 @@ export default {
       this.$router.push("/product?id=" + product.id);
     },
     remover(product) {
-      if (confirm("Deseja excluir o produto?")) {
-        Product.apagar(product)
-          .then(resposta => {
+      Product.remover(product)
+        .then(resposta => {
+          if (resposta.statuscode == 200) {
             Product.listar()
               .then(resposta => {
                 this.products = resposta.data;
@@ -75,15 +75,12 @@ export default {
               .catch(e => {
                 console.log(e);
               });
-            console.log(resposta);
-            Product.listar().then(resposta => {
-              console.log(resposta);
-            });
-          })
-          .catch(e => {
-            console.log(e);
-          });
-      }
+          }
+        })
+        .catch(e => {
+          console.log(e);
+          alert("Produto com pedidos vinculados");
+        });
     }
   }
 
