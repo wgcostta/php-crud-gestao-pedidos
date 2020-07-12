@@ -75,22 +75,26 @@ export default {
       this.$router.push("/product?id=" + product.id);
     },
     remover(product) {
-      Product.remover(product)
-        .then(resposta => {
-          if (resposta.statuscode == 200) {
-            Product.listar()
-              .then(resposta => {
-                this.products = resposta.data;
-              })
-              .catch(e => {
-                console.log(e);
-              });
-          }
-        })
-        .catch(e => {
-          console.log(e);
-          this.mensagem = "Produto com pedidos vinculados";
-        });
+      this.$confirm("Deseja excluir o produto?", "Atenção!", "warning").then(
+        () => {
+          Product.remover(product)
+            .then(resposta => {
+              if (resposta.statuscode == 200) {
+                Product.listar()
+                  .then(resposta => {
+                    this.products = resposta.data;
+                  })
+                  .catch(e => {
+                    console.log(e);
+                  });
+              }
+            })
+            .catch(e => {
+              console.log(e);
+              this.mensagem = "Produto com pedidos vinculados";
+            });
+        }
+      );
     }
   }
 };

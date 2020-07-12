@@ -1,4 +1,5 @@
-import { http } from './config'
+import { http } from './config';
+
 
 export default {
 
@@ -21,9 +22,9 @@ export default {
 
     remover: (product) => {
         let urlEnvio = 'product/' + product.id;
-        if (confirm("Deseja excluir o produto?")) {
-            return http.delete(urlEnvio + '/delete');
-        }
+
+        return http.delete(urlEnvio + '/delete');
+
     },
 
     validationProduct: (product) => {

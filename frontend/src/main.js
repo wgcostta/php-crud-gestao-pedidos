@@ -11,6 +11,10 @@ import '@fortawesome/fontawesome-free/js/all.js'
 import HomeOrdersComponent from './view/Orders/HomeOrdersComponent'
 import HomeQuotationsComponent from './view/Quotations/HomeQuotationsComponent'
 
+import VueSimpleAlert from "vue-simple-alert";
+//Dialog Simples
+Vue.use(VueSimpleAlert);
+
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
