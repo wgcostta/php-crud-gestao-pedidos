@@ -19,6 +19,7 @@ php artisan serve
 Configurações FrontEnd:
 \frontend\src\services\config.js -> Pode ser alterado a baseURL: 'http://127.0.0.1:8000/api'
 Executar os comandos dentro do diretório \frontend
+yarn global add @vue/cli
 yarn install
 yarn serve
 
