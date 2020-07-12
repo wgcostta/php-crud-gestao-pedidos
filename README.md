@@ -1,8 +1,4 @@
 # Gestão de produtos, pedidos e cotação de frete para lojas
-===============
-
-[![Linkedin](https://www.linkedin.com/in/wagnercostta/)]
-
 ---
 
 ### Configurações backend:
