@@ -80,7 +80,14 @@ export default {
         error: []
       },
       consulta: Array,
-      quotation: {
+      quotationpac: {
+        id: "",
+        id_orders: "",
+        codigoservico: "",
+        valorfrete: "",
+        prazoentrega: ""
+      },
+      quotationsedex: {
         id: "",
         id_orders: "",
         codigoservico: "",
@@ -125,23 +132,25 @@ export default {
         });
     },
     salvar() {
-      if (!this.quotation.id) {
-        for (var i = 0; i < this.consulta.length; i++) {
-          this.quotation.id_orders = this.ordered.id;
-          this.quotation.codigoservico = this.consulta[i].code;
-          this.quotation.valorfrete = this.consulta[i].price;
-          this.quotation.prazoentrega = this.consulta[i].deadline;
-
-          if (i == 0) {
-            Quotations.salvarSedex(this.quotation).then(resposta => {
-              console.log(resposta);
-            });
-          } else {
-            Quotations.salvarPac(this.quotation).then(resposta => {
+      if (!this.quotationpac.id) {
+        this.quotationpac.id_orders = this.ordered.id;
+        this.quotationpac.codigoservico = this.consulta[0].code;
+        this.quotationpac.valorfrete = this.consulta[0].price;
+        this.quotationpac.prazoentrega = this.consulta[0].deadline;
+        console.log(this.quotationpac);
+        Quotations.salvarPac(this.quotationpac).then(resposta => {
+          console.log(resposta);
+          if (this.consulta.length > 1) {
+            this.quotationsedex.id_orders = this.ordered.id;
+            this.quotationsedex.codigoservico = this.consulta[1].code;
+            this.quotationsedex.valorfrete = this.consulta[1].price;
+            this.quotationsedex.prazoentrega = this.consulta[1].deadline;
+            console.log(this.quotationsedex);
+            Quotations.salvarSedex(this.quotationsedex).then(resposta => {
               console.log(resposta);
             });
           }
-        }
+        });
       }
     },
     carregarObjetos(id) {
