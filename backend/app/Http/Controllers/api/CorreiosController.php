@@ -37,7 +37,7 @@ class CorreiosController extends Controller
             return $correios->freight()
             ->origin($ceporigem)
             ->destination($cepdestino)
-            ->services($service)
+            ->services($servico)
             ->item($largura, $altura, $comprimento, $peso, $quantidade) 
             ->calculate();
         }

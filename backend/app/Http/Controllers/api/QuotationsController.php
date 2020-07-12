@@ -4,21 +4,19 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Quotations;
+use Illuminate\Support\Facades\DB;
 
 class QuotationsController extends Controller
 {
-    private $objProduct;
-    private $objQuotations;
-    public function __construct(){
-        $this->objProduct = new Product();
-        $this->objQuotations = new Quotations;
-    }
+
     
     public function index()
     {
-        return Quotations::all();
+       // return Quotations::all();
+       return DB::table('quotations')
+       ->select('quotations.*',DB::raw('IF(quotations.codigoservico="04510","PAC","SEDEX") AS nomeservico'))
+       ->get();
     }
 
     public function store(Request $request)

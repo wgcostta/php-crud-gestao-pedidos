@@ -7,7 +7,7 @@ export default {
     },
 
     consultarFrete: (frete) => {
-
+        console.log(JSON.stringify(frete))
         return http.post('correios', frete);
 
     },
@@ -16,8 +16,11 @@ export default {
     },
     salvarSedex: (quotation) => {
         return http.post('quotations', quotation);
-    }
+    },
+    apagar: (quotation) => {
 
+        return http.delete('quotations/' + quotation.id, { data: quotation })
+    },
 
 
 }

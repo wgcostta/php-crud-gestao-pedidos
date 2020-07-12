@@ -31,13 +31,13 @@
               <td>{{product.comprimento}}</td>
               <td>{{product.largura}}</td>
               <td>
-                <b-button @click="gerarPedido(product)" variant="outline-secondary" class="btn">
-                  <b-icon icon="arrow-clockwise" aria-hidden="true" />Gerar Pedido
+                <b-button @click="gerarPedido(product)" variant="info" class="btn" pill>
+                  <b-icon icon="cart-plus" aria-hidden="true" />Gerar Pedido
                 </b-button>
-                <b-button @click="editar(product)" variant="outline-primary" class="btn">
+                <b-button @click="editar(product)" variant="outline-primary" class="btn" pill>
                   <b-icon icon="pencil-square" aria-hidden="true" />
                 </b-button>
-                <b-button @click="remover(product)" variant="outline-danger" class="btn">
+                <b-button @click="remover(product)" variant="outline-danger" class="btn" pill>
                   <b-icon icon="trash" aria-hidden="true" />
                 </b-button>
               </td>

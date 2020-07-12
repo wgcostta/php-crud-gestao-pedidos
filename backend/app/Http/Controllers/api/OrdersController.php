@@ -16,7 +16,7 @@ class OrdersController extends Controller
         return DB::table('orders')
         ->join('products', 'orders.id_product', '=', 'products.id')
         ->select('orders.*', 'products.nome', 'products.peso', 'products.comprimento', 'products.altura', 'products.largura')
-        ->get(1);
+        ->get();
     }
 
     public function store(Request $request)

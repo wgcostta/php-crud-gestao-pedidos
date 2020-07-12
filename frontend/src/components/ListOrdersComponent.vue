@@ -29,10 +29,10 @@
               <td>{{ordered.quantidade}}</td>
 
               <td>
-                <b-button @click="gerarCotacao(ordered.id)" variant="outline-secondary" class="btn">
-                  <b-icon icon="arrow-clockwise" aria-hidden="true" />Gerar Cotação
+                <b-button @click="gerarCotacao(ordered.id)" variant="info" class="btn" pill>
+                  <b-icon icon="cart-plus" aria-hidden="true" />' Nova cotação'
                 </b-button>
-                <b-button @click="editar(ordered)" variant="outline-primary" class="btn">
+                <b-button @click="editar(ordered)" variant="outline-primary" class="btn" pill>
                   <b-icon icon="pencil-square" aria-hidden="true" />
                 </b-button>
               </td>
