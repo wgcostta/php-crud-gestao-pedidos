@@ -8,7 +8,7 @@
     .sidebar{
         width: 220px;
         height: 100vh;
-        background-color: #fff;
+        background-color: $whitefound;
     }
 
     .content-right{
@@ -18,9 +18,11 @@
         .navbar{
             width: 100%;
             padding: 20px 15px;
-            background-color: $dark;
-            color: white;
-            filter: brightness(85%);
+            
+            background-color: $whitefound;
+            color: $dark;
+            
+            //filter: brightness(85%);
         }
 
         .pages{

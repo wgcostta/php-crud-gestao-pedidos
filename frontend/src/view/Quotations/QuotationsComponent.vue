@@ -107,7 +107,7 @@ export default {
   methods: {
     enviar() {
       this.ordered.servico = this.selected;
-      console.log(this.ordered);
+
       Quotations.consultarFrete(this.ordered)
         .then(resposta => {
           console.log(resposta);

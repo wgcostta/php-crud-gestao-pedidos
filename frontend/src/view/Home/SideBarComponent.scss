@@ -3,7 +3,13 @@
 .main{
 
     .sidebar{
+        background-color: $whitefound;
+        color: $whitefound;
+        
+        border-left: 2px;
+        border-bottom-left-radius: 5px;
         .top{
+
             width: 100%;
             display: flex;
             justify-content: center;
@@ -13,13 +19,14 @@
                 border-radius: 50%;
             }
         }
-
-        .list{
-//            background-color: #fff;
-//            color: #000;
-            padding: 10px;
-            
+        .listgroup{
+            margin-top: 20px;
+            .list{
+                padding: 10px;
+                
+            }
         }
+
     }
 
     

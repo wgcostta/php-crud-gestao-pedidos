@@ -11,7 +11,7 @@ export default {
     },
 
     atualizar: (ordered) => {
-        console.log(JSON.stringify(ordered))
+
         return http.post('orders/' + ordered.id, ordered);
     },
 
