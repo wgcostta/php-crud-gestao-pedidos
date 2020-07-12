@@ -5,9 +5,9 @@
 
 ```
 Dentro da pasta do projeto, em \backend:
-.env -> Conexão do Banco
-Create database laravel;
-Executar no diretório \backend
+\backend\.env -> Conexão do Banco MySQL, caso necessite pode alterar o database ou dar um 'create database laravel;'
+Configurar usuario, porta e senha para conexão com o mysql.
+Antes de subir o serviço, executar no diretório \backend
 php artisan migrate
 php artisan serve
 
@@ -17,8 +17,8 @@ php artisan serve
 
 ```
 Configurações FrontEnd:
-config.js -> Pode ser alterado a baseURL: 'http://127.0.0.1:8000/api'
-Executar no diretório \frontend
+\frontend\src\services\config.js -> Pode ser alterado a baseURL: 'http://127.0.0.1:8000/api'
+Executar os comandos dentro do diretório \frontend
 yarn install
 yarn serve
 
