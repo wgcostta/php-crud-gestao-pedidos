@@ -13,14 +13,22 @@
       <div class="listgroup">
         <b-list-group>
           <b-list-group-item router-link :to="{ name: 'home' }" class="list">Inicio</b-list-group-item>
-          <b-list-group-item router-link :to="{ name: 'product' }" class="list">Cadastrar Produtos</b-list-group-item>
-          <b-list-group-item router-link :to="{ name: 'productslist' }" class="list">Listar Produtos</b-list-group-item>
-          <b-list-group-item router-link :to="{ name: 'orderslist' }" class="list">Listar Pedidos</b-list-group-item>
+          <b-list-group-item router-link :to="{ name: 'product' }" class="list">Cadastro de Produtos</b-list-group-item>
+          <b-list-group-item
+            router-link
+            :to="{ name: 'productslist' }"
+            class="list"
+          >Listagem de Produtos</b-list-group-item>
+          <b-list-group-item
+            router-link
+            :to="{ name: 'orderslist' }"
+            class="list"
+          >Listagem de Pedidos</b-list-group-item>
           <b-list-group-item
             router-link
             :to="{ name: 'quotationslist' }"
             class="list"
-          >Listar Cotações</b-list-group-item>
+          >Listagem de Cotações</b-list-group-item>
         </b-list-group>
       </div>
     </div>
