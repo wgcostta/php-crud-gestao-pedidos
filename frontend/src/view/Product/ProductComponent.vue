@@ -1,14 +1,7 @@
 <template>
   <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
-      <b-alert
-        class="alert"
-        variant="warning"
-        dismissible
-        fade
-        :show="showDismissibleAlert"
-        @dismissed="showDismissibleAlert=false"
-      >{{mensagem}}</b-alert>
+      <AlertComponent :mensagem="mensagem" />
       <div class="main">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -127,10 +120,12 @@
 <script>
 import DashBoardComponent from "../Home/DashBoardComponent";
 import Product from "../../services/productService";
+import AlertComponent from "../../components/AlertComponent";
 export default {
   name: "ProductComponent",
   components: {
-    DashBoardComponent
+    DashBoardComponent,
+    AlertComponent
   },
   data() {
     return {

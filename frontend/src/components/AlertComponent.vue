@@ -2,8 +2,7 @@
   <div v-if="mensagem != ''">
     <b-alert
       class="alert"
-      variant="warning"
-      dismissible
+      variant="info"
       fade
       :show="mostrar"
       @dismissed="mostrar=true"

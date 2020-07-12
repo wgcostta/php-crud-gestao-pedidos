@@ -1,5 +1,5 @@
 <template>
-  <DashBoardComponent :showDismissibleAlert="showDismissibleAlert">
+  <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
       <ListComponent :products="products" />
     </div>
@@ -26,14 +26,7 @@ export default {
     DashBoardComponent,
     ListComponent
   },
-  methods: {
-    ngOnInit() {
-      // se possivel, capture o parametro
-      this.showDismissibleAlert = this.$router.queryParamMap.map(
-        params => params.get("showDismissibleAlert") || "None"
-      );
-    }
-  }
+  methods: {}
 };
 </script>
 
