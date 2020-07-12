@@ -7,6 +7,24 @@
     display: flex;
     height: 100vh;
     font-family: Roboto,sans-serif,Tahoma;
+    
+    .login {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        padding: 5px;
+
+        .content-login{
+            width: 500px;
+            height: 400px;
+
+            justify-content: center;
+            padding: 5px;
+            flex-direction: column;
+        }
+        
+    }    
 }
 
 .content-pages{
@@ -21,9 +39,13 @@ header{
     padding: 5px;
 }
 
+
 .alert{
     width: 400px; 
     float:right;
     margin-top: -80px  
 }
 
+.form{
+    margin-top: 40px;
+}

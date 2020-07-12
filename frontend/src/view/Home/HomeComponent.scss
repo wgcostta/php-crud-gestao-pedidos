@@ -1,12 +1,17 @@
 @import '@/assets/scss/_main';
 
 .imgCentro {
+  width: 100%;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 60px;
   flex-direction: column;
-  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 50px;
+}
+
+.content-login{
+  border: 0;
+  border-radius: 0;
 }

@@ -1,43 +1,30 @@
 @import '@/assets/scss/_main';
 
-.login {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    margin-top: 50px;
+.content-login{
+
+    border: 2px solid $purple;
+    border-radius: 5px;
+    h4{
+        margin-top: 10px; 
+        text-align: right;   
+    }
     
-    .content-login{
-        width: 500px;
-        height: 400px;
-        border: 2px solid $purple;
-        border-radius: 5px;
-        justify-content: center;
-        padding: 5px;
-        flex-direction: column;
-
-        header{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-        h4{
-            margin-top: 10px; 
-            text-align: right;   
-        }
-        
-        h5{
-            margin-top: 50px;  
-            text-align: right;  
-        }
-
+    h5{
+        margin-top: 50px;  
+        text-align: right;  
     }
 
-}
 
+}
+    h4{
+        margin-top: 10px; 
+        text-align: right;   
+    }
+    
+    h5{
+        margin-top: 50px;  
+        text-align: right;  
+    }
 
 mt-2{
     padding: 2px;
@@ -70,6 +57,3 @@ button{
     margin:  2px 2px 2px 2px;
 }
 
-.form{
-    margin-top: 40px;
-}

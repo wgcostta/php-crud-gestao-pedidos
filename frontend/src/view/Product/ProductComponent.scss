@@ -1,29 +1,9 @@
 @import '@/assets/scss/_main';
 
-.login {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    padding: 5px;
-
-    .content-login{
-        width: 500px;
-        height: 400px;
-        border: 2px solid $purple;
-        border-radius: 5px;
-        justify-content: center;
-        padding: 5px;
-        flex-direction: column;
-        
-        h5{
-            margin-top: 30px;  
-        }
-
-    }
-
+.content-login{
+    border: 2px solid $purple;
+    border-radius: 5px;
 }
-
 
 mt-2,button{
     padding: 2px;
@@ -53,7 +33,5 @@ button{
     float:right
 }
 
-.form{
-    margin-top: 40px;
-}
+
 
