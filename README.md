@@ -1,46 +1,35 @@
-# APIs para gestão de produtos, pedidos e cotação de frete para lojas
+# Gestão de produtos, pedidos e cotação de frete para lojas
 ===============
 
-[![Build Status](https://travis-ci.org/Deividy/frete.png?branch=master)](https://travis-ci.org/Deividy/frete)
+[![Linkedin](https://www.linkedin.com/in/wagnercostta/)]
 
 ---
 
-## Exemplos
-
-### Calculo simples de prazo:
-
-```javascript
-const frete = require('frete');
-
-frete()
-    .cepOrigem('13467460')
-    .servico(frete.servicos.sedex)
-    .prazo('13466321', function (err, results) {
-        console.log(err);
-        console.log(results);
-    })
+### Configurações backend:
 
 ```
 
-
-## Dependency
-- [argument-validator](https://github.com/Deividy/argument-validator)
-- [node-soap](https://github.com/vpulim/node-soap)
-
-
-Configurações backend:
 .env -> Conexão do Banco
 Create database laravel;
 php artisan migrate
 php artisan serve
 
+```
+
+### Configurações backend:
+
+```
 Configurações FrontEnd:
 config.js
 baseURL: 'http://127.0.0.1:8000/api'
 yarn install
 yarn serve
 
-Teste de Conhecimentos - Programador PHP
+```
+
+#### Requisitos:
+
+```
 Objetivo
 Criar uma aplicação para o cadastro de pedidos e cotação de frete utilizando a linguagem PHP, Banco
 de dados Mysql ou Postgres e linguagens Web (HTML, CSS e JavaScript). Será necessário criar APIs e
@@ -116,3 +105,4 @@ Subir o projeto no GitHub ou similar, deixá-lo público e mandar o link para av
 Criar o README do projeto com as especificações técnicas e instruções de uso e instalação.
 A aplicação pode estar disponível na nuvem (Heroku, Digital Ocean etc), disponibilizar os containers
  
+```
