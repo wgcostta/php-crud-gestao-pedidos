@@ -52,7 +52,7 @@ export default {
 
   methods: {
     editar(ordered) {
-      this.$router.push("/ordered?id=" + ordered.id);
+      this.$router.push("/orders?idorder=" + ordered.id);
     },
     gerarCotacao(id) {
       if (id > 0) {

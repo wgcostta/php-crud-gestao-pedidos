@@ -26,7 +26,6 @@ class OrdersController extends Controller
 
     public function show($id)
     {
-        
         return  DB::table('orders')
         ->join('products', 'orders.id_product', '=', 'products.id')
         ->select('orders.*', 'products.nome', 'products.peso', 'products.comprimento', 'products.altura', 'products.largura')

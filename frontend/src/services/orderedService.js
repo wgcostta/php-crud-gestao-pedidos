@@ -10,10 +10,14 @@ export default {
         return http.post('orders', ordered);
     },
 
+    atualizar: (ordered) => {
+        console.log(JSON.stringify(ordered))
+        return http.post('orders/' + ordered.id, ordered);
+    },
+
+
     carregar: (id) => {
-
         return http.get('orders/' + id);
-
     },
 
     validationOrdered: (ordered) => {

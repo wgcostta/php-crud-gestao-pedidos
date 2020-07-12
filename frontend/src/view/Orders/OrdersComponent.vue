@@ -109,7 +109,7 @@ export default {
   data() {
     return {
       showDismissibleAlert: false,
-      pedido: false,
+      pedido: "",
 
       mensagem: "",
       product: {
@@ -131,10 +131,9 @@ export default {
   },
   mounted() {
     if (this.$route.query.id > 0) {
-      Product.carregar(this.$route.query.id).then(resposta => {
-        console.log(resposta);
-        this.product = resposta.data;
-      });
+      this.carregarProduto(this.$route.query.id);
+    } else if (this.$route.query.idorder > 0) {
+      this.carregarPedido(this.$route.query.idorder);
     }
   },
   methods: {
@@ -142,28 +141,51 @@ export default {
       this.mensagem = Ordered.validationOrdered(this.ordered);
 
       if (this.mensagem == "") {
-        this.ordered.id_product = this.product.id;
-        Ordered.salvar(this.ordered)
-          .then(resposta => {
-            console.log(resposta);
-            this.ordered = resposta.data;
-
-            if (!this.pedido) {
-              this.paginaPrincipal();
-            } else {
-              if (this.ordered.id > 0) {
-                this.$router.push("/quotations?id=" + this.ordered.id);
+        if (!this.ordered.id) {
+          this.ordered.id_product = this.product.id;
+          Ordered.salvar(this.ordered)
+            .then(resposta => {
+              console.log(resposta);
+              this.ordered = resposta.data;
+              this.validarProximaEtapa();
+            })
+            .catch(e => {
+              console.log(e.response);
+              alert("Campos Obrigatórios não informados!");
+              this.errors = e.response.data.errors;
+            });
+        } else {
+          console.log(this.ordered);
+          Ordered.atualizar(this.ordered)
+            .then(resposta => {
+              console.log(resposta);
+              this.ordered = resposta.data;
+              if (this.pedido == "") {
+                this.pedido = "prod";
               }
-            }
-          })
-          .catch(e => {
-            console.log(e.response);
-            alert("Campos Obrigatórios não informados!");
-            this.errors = e.response.data.errors;
-          });
+              this.validarProximaEtapa();
+            })
+            .catch(e => {
+              console.log(e.response);
+              alert("Campos Obrigatórios não informados!");
+              this.errors = e.response.data.errors;
+            });
+        }
       } else {
         this.showDismissibleAlert = this.mensagem != "";
       }
+    },
+    validarProximaEtapa() {
+      if (this.pedido == "cot") {
+        if (this.ordered.id > 0) {
+          this.$router.push("/quotations?id=" + this.ordered.id);
+        }
+      } else if (this.pedido == "prod") {
+        this.paginaPrincipal();
+      } else {
+        this.$router.push({ name: "orders" });
+      }
+      this.pedido = "";
     },
     paginaPrincipal() {
       this.$router.push(
@@ -172,8 +194,25 @@ export default {
       );
     },
     gerarCotacao() {
-      this.pedido = true;
+      this.pedido = "cot";
       this.salvar();
+    },
+    carregarProduto(id) {
+      Product.carregar(id).then(resposta => {
+        console.log(resposta);
+        this.product = resposta.data;
+      });
+    },
+    carregarPedido(id) {
+      Ordered.carregar(id).then(resposta => {
+        console.log(resposta);
+        this.ordered = resposta.data[0];
+
+        Product.carregar(this.ordered.id_product).then(resposta => {
+          console.log(resposta);
+          this.product = resposta.data;
+        });
+      });
     }
   }
 };
