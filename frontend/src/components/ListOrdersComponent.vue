@@ -1,8 +1,9 @@
 <template>
   <div class="lists">
     <div class="top">
-      <p>Listagem de Pedidos</p>
-      <hr />
+      <header>
+        <h4>Listagem de Pedidos</h4>
+      </header>
 
       <div class="content">
         <table

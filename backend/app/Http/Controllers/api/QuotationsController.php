@@ -13,7 +13,6 @@ class QuotationsController extends Controller
     
     public function index()
     {
-       // return Quotations::all();
        return DB::table('quotations')
        ->select('quotations.*',DB::raw('IF(quotations.codigoservico="04510","PAC","SEDEX") AS nomeservico'))
        ->get();

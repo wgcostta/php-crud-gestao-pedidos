@@ -11,7 +11,6 @@ export default {
     },
 
     atualizar: (ordered) => {
-
         return http.post('orders/' + ordered.id, ordered);
     },
 
