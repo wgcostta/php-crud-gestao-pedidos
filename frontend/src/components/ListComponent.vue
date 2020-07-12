@@ -83,10 +83,6 @@ export default {
         });
     }
   }
-
-  // <div>
-  //<b-table striped hover :items="products"></b-table>
-  //</div>
 };
 </script>
 

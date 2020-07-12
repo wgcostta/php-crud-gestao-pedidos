@@ -1,20 +1,22 @@
 <template>
   <div class="navbar">
-    <b-alert
-      :show="showDismissibleAlert"
-      variant="success"
-      @dismissed="showDismissibleAlert=true"
-    >Salvo com sucesso!</b-alert>
+    <div class="alert">
+      <AlertComponent :mensagem="mensagem" />
+    </div>
   </div>
 </template>
 
 <script>
+import AlertComponent from "../../components/AlertComponent";
 export default {
   name: "NavBarComponent",
   data() {
     return {
-      showDismissibleAlert: false
+      mensagem: ""
     };
+  },
+  components: {
+    AlertComponent
   }
 };
 </script>
