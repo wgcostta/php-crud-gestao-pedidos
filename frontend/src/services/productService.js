@@ -36,6 +36,7 @@ export default {
             product.largura == ""
         ) {
             $mensagem = "Todos os Campos devem ser informados";
+
         } else {
             if (product.peso > 30) {
                 $mensagem = "Peso deve ser até 30 kg";
@@ -58,13 +59,14 @@ export default {
                         "A soma das dimensões não pode ultrapassar 200 cm. Dimensões atuais: " +
                         dimensoes;
                 }
-            }
 
-            return $mensagem;
-            /*- Comprimento: 16cm à 105cm; Altura: 2cm à 105cm; Largura: 11cm à 105cm;
-            - Soma máxima das dimensões: 200cm.
-            - Limite de peso: 30kg. */
+
+                /*- Comprimento: 16cm à 105cm; Altura: 2cm à 105cm; Largura: 11cm à 105cm;
+                - Soma máxima das dimensões: 200cm.
+                - Limite de peso: 30kg. */
+            }
         }
+        return $mensagem;
 
     }
 

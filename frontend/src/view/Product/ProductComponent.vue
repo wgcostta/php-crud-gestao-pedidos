@@ -1,7 +1,8 @@
 <template>
-  <DashBoardComponent :showDismissibleAlert="showDismissibleAlert">
+  <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
       <b-alert
+        class="alert"
         variant="warning"
         dismissible
         fade

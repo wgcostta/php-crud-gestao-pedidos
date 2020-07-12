@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div v-if="mensagem != ''">
     <b-alert
+      class="alert"
       variant="warning"
       dismissible
       fade
       :show="mostrar"
-      @dismissed="mostrar=false"
+      @dismissed="mostrar=true"
     >{{mensagem}}</b-alert>
   </div>
 </template>
@@ -15,7 +16,7 @@ export default {
   props: { mensagem: String },
   data() {
     return {
-      mostrar: false
+      mostrar: true
     };
   },
   mounted() {
