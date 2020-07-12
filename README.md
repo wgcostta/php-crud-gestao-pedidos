@@ -3,6 +3,7 @@
 Configurações backend:
 .env -> Conexão do Banco
 Create database laravel;
+php artisan migrate
 php artisan serve
 
 Configurações FrontEnd:
