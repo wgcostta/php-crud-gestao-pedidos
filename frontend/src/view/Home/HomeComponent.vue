@@ -1,34 +1,32 @@
 <template>
   <DashBoardComponent>
     <div slot="slot-pages" class="content-pages">
-      <ListComponent :products="products" />
+      <div class="main">
+        <div class="login">
+          <span>
+            <img
+              src="https://images.tcdn.com.br/appstore/appstore/345/img/fretefacil.jpg"
+              class="imgCentro"
+            />
+          </span>
+        </div>
+      </div>
     </div>
   </DashBoardComponent>
 </template>
 
 <script>
 import DashBoardComponent from "./DashBoardComponent";
-import ListComponent from "../../components/ListComponent";
-import Product from "../../services/productService";
 
 export default {
   name: "HomeComponent",
 
-  data() {
-    return { showDismissibleAlert: false, products: [] };
-  },
-  mounted() {
-    Product.listar().then(resposta => {
-      this.products = resposta.data;
-    });
-  },
   components: {
-    DashBoardComponent,
-    ListComponent
+    DashBoardComponent
   },
   methods: {}
 };
 </script>
 
-<style scoped>
-</style>
+<style lang="scss" src="./HomeComponent.scss" scoped />
+

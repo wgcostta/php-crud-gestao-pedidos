@@ -1,5 +1,9 @@
 <template>
-  <div class="navbar"></div>
+  <div class="navbar">
+    <header>
+      <h4>Frete Fácil</h4>
+    </header>
+  </div>
 </template>
 
 <script>
@@ -8,11 +12,5 @@ export default {
 };
 </script>
 
-<style scoped>
-img {
-  max-width: 150px;
-  max-height: 100px;
-  width: auto;
-  height: auto;
-}
-</style>
+
+<style lang="scss" src="./NavBarComponent.scss" scoped />

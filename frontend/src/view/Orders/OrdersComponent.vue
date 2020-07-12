@@ -183,7 +183,7 @@ export default {
       this.pedido = "";
     },
     paginaPrincipal() {
-      this.$router.push({ name: "home" });
+      this.$router.push({ name: "productslist" });
     },
     gerarCotacao() {
       this.pedido = "cot";

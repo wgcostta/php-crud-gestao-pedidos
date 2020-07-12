@@ -193,7 +193,7 @@ export default {
 
     paginaPrincipal() {
       this.$router.push(
-        { name: "home" },
+        { name: "productslist" },
         { queryParams: this.showDismissibleAlert }
       );
     }

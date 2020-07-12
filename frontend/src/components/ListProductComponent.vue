@@ -56,7 +56,7 @@
 import Product from "../services/productService";
 import AlertComponent from "./AlertComponent";
 export default {
-  name: "ListComponent",
+  name: "ListProductComponent",
 
   props: { products: Array },
   components: {
